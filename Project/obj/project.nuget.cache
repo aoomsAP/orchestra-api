@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "NDNL3nYtYV9rHp08AMI32+jWmpmsOiXD0jUF3SxEu8/efdBTUXpEuyC6UFA+FrpvMrGX9lK9IFe4tQFYTF28Vw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Project.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\32473\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\32473\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\32473\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\32473\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
