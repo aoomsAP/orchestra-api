@@ -19,8 +19,6 @@ namespace Project.ViewModels
 
         [Required]
         public Instruments Instrument { get; set; }
-
-        // IEnumerable of Orchestras?
     }
 
     public class MusicianUpdateViewModel
@@ -31,6 +29,8 @@ namespace Project.ViewModels
         [Required]
         public Instruments Instrument { get; set; }
 
-        // IEnumerable of Orchestras?
+        [Required]
+        public IEnumerable<int> OrchestraIds { get; set; }
+
     }
 }

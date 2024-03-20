@@ -16,8 +16,6 @@ namespace Project.ViewModels
 
         [Required]
         public string Name { get; set; }
-
-        //public IEnumerable<Orchestra> Orchestras { get; set; }
     }
 
     public class CountryUpdateViewModel
@@ -25,6 +23,14 @@ namespace Project.ViewModels
         [Required]
         public string Name { get; set; }
 
-        //public IEnumerable<Orchestra> Orchestras { get; set; }
+        [Required]
+        public IEnumerable<int> OrchestraIds { get; set; }
+
     }
+
+    //public class CountryUpdateOrchestrasViewModel
+    //{
+    //    [Required]
+    //    public IEnumerable<int> OrchestraIds { get; set; }
+    //}
 }

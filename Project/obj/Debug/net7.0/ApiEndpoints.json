@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "Project.Controllers.CountryController",
+    "ContainingType": "Project.Controllers.APIController",
     "Method": "GetCountryAll",
-    "RelativePath": "countries",
+    "RelativePath": "api/countries",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -10,25 +10,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.CountryController",
-    "Method": "GetCountryDetail",
-    "RelativePath": "countries/{code}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "code",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Project.Controllers.CountryController",
+    "ContainingType": "Project.Controllers.APIController",
     "Method": "CreateCountry",
-    "RelativePath": "countries/create",
+    "RelativePath": "api/countries",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -42,10 +26,10 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.CountryController",
-    "Method": "DeleteRouteMethod",
-    "RelativePath": "countries/delete/{code}",
-    "HttpMethod": "DELETE",
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "GetCountryDetail",
+    "RelativePath": "api/countries/{code}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -58,9 +42,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.CountryController",
+    "ContainingType": "Project.Controllers.APIController",
     "Method": "UpdateCountry",
-    "RelativePath": "countries/update/{code}",
+    "RelativePath": "api/countries/{code}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -79,25 +63,41 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.MusicianController",
-    "Method": "GetMusicianDetail",
-    "RelativePath": "musicians/{id}",
-    "HttpMethod": "GET",
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "DeleteRouteMethod",
+    "RelativePath": "api/countries/{code}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
+        "Name": "code",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.MusicianController",
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "GetOrchestrasPerCountry",
+    "RelativePath": "api/countries/{code}/orchestras",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
     "Method": "GetMusicianAll",
-    "RelativePath": "musicians/all",
+    "RelativePath": "api/musicians",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -105,9 +105,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.MusicianController",
+    "ContainingType": "Project.Controllers.APIController",
     "Method": "CreateMusician",
-    "RelativePath": "musicians/create",
+    "RelativePath": "api/musicians",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -121,10 +121,10 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.MusicianController",
-    "Method": "DeleteMusician",
-    "RelativePath": "musicians/delete/{id}",
-    "HttpMethod": "DELETE",
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "GetMusicianDetail",
+    "RelativePath": "api/musicians/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -137,9 +137,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.MusicianController",
+    "ContainingType": "Project.Controllers.APIController",
     "Method": "UpdateMusician",
-    "RelativePath": "musicians/update/{id}",
+    "RelativePath": "api/musicians/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -158,51 +158,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.OrchestraController",
-    "Method": "GetOrchestraDetail",
-    "RelativePath": "orchestras/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Project.Controllers.OrchestraController",
-    "Method": "GetOrchestraAll",
-    "RelativePath": "orchestras/all",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Project.Controllers.OrchestraController",
-    "Method": "CreateOrchestra",
-    "RelativePath": "orchestras/create",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "orchestraCreateViewModel",
-        "Type": "Project.ViewModels.OrchestraCreateViewModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Project.Controllers.OrchestraController",
-    "Method": "DeleteOrchestra",
-    "RelativePath": "orchestras/delete/{id}",
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "DeleteMusician",
+    "RelativePath": "api/musicians/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -216,9 +174,88 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Project.Controllers.OrchestraController",
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "GetOrchestrasPerMusician",
+    "RelativePath": "api/musicians/{id}/orchestras",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "UpdateMusicianOrchestras",
+    "RelativePath": "api/musicians/{id}/orchestras",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "musicianUpdateOrchestrasViewModel",
+        "Type": "Project.ViewModels.MusicianUpdateOrchestrasViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "GetOrchestraAll",
+    "RelativePath": "api/orchestras",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "CreateOrchestra",
+    "RelativePath": "api/orchestras",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orchestraCreateViewModel",
+        "Type": "Project.ViewModels.OrchestraCreateViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "GetOrchestraDetail",
+    "RelativePath": "api/orchestras/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
     "Method": "UpdateOrchestra",
-    "RelativePath": "orchestras/update/{id}",
+    "RelativePath": "api/orchestras/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -231,6 +268,59 @@
       {
         "Name": "orchestraUpdateViewModel",
         "Type": "Project.ViewModels.OrchestraUpdateViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "DeleteOrchestra",
+    "RelativePath": "api/orchestras/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "GetMusiciansPerOrchestra",
+    "RelativePath": "api/orchestras/{id}/musicians",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "UpdateOrchestraMusicians",
+    "RelativePath": "api/orchestras/{id}/musicians",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "orchestraUpdateMusiciansViewModel",
+        "Type": "Project.ViewModels.OrchestraUpdateMusiciansViewModel",
         "IsRequired": true
       }
     ],

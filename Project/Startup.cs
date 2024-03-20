@@ -9,11 +9,8 @@ namespace Project
         {
             services.AddControllers();
             services.AddSwaggerGen();
-            services.AddScoped<ICountryData, InMemoryCountryData>();
-            services.AddScoped<IMusicianData, InMemoryMusicianData>();
-            services.AddScoped<IOrchestraData, InMemoryOrchestraData>();
+            services.AddScoped<IData, InMemoryData>();
         }
-
 
         // The below method gets called by runtime
         // It configures the HTTP request pipeline

@@ -6,6 +6,6 @@
 
         public string Code { get; set; }
 
-        public IEnumerable<Orchestra> Orchestras { get; set; }
+        public List<Orchestra> Orchestras { get; set; }
     }
 }

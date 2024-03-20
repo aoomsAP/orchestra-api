@@ -8,6 +8,6 @@
 
         public string Conductor { get; set; }
 
-        public IEnumerable<Musician> Musicians { get; set; }
+        public List<Musician> Musicians { get; set; }
     }
 }
