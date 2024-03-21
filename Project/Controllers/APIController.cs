@@ -8,6 +8,10 @@ namespace Project.Controllers
     [Route("api")]
     public class APIController : Controller
     {
+        // this API controller class contains endpoints for 3 entities: Country, Orchestra, and Musician
+        // the logic for these endpoints is roughly the same for all entities
+        // further documentation is provided for the first entity, Country, as to not clutter the entire class
+
         private IData inMemoryData;
 
         public APIController(IData inMemoryData)
@@ -27,7 +31,7 @@ namespace Project.Controllers
         [Route("countries")]
         public IActionResult GetCountryAll()
         {
-            // for each country in the database, get copy that adheres to view model & add to list
+            // for each country in the database, collect copy that adheres to view model (exclude relationships (orchestras) list)
             var countries = new List<CountryGetViewModel>();
             foreach (var country in this.inMemoryData.GetCountries())
             {
@@ -70,7 +74,7 @@ namespace Project.Controllers
                 return NotFound("Country not found.");
             }
 
-            // for each relationship (orchestra), get copy that adheres to view model (= without list of relationships)
+            // for each relationship (orchestra), get copy that adheres to view model (exclude relationships (musicians) list)
             var orchestras = new List<OrchestraGetViewModel>();
             foreach (var orchestra in country.Orchestras)
             {
@@ -93,12 +97,12 @@ namespace Project.Controllers
                 return BadRequest(ModelState);
             }
 
-            // create new country based on Create view model data
+            // create new country based on view model data + initialize empty list of relationships
             var newCountry = new Country
             {
                 Code = countryCreateViewModel.Code,
                 Name = countryCreateViewModel.Name,
-                Orchestras = new List<Orchestra>(), // initialize empty list of relationships
+                Orchestras = new List<Orchestra>(),
             };
 
             // add country to database & return object that was just created
@@ -108,10 +112,11 @@ namespace Project.Controllers
 
         // UPDATE
 
-        // the following method gets updated data, but also a list of ids from the body
-        // based on the given ids, a list of relationships (in this case orchestras) will be collected
-        // this new list of relationships will replace the old list of relationships
-        // in other words, this route will cover both the adding & removing of relationships from the list
+        // the below method makes use of a CountryUpdateViewModel
+        // it consists of updated data + a list of ids that refer to the relationships (orchestras) for this object
+        // a) both regular data & relationships are updated in this method
+        // b) the httpput/update takes care of all changes, whether they alter data, add relationships, or remove relationships
+        // therefore, no other controller methods are necessary
 
         [HttpPut()]
         [Route("countries/{code}")]
@@ -130,7 +135,7 @@ namespace Project.Controllers
                 return NotFound("Country not found."); // 404
             }
 
-            // get list of orchestras based on list of ids from model
+            // get list of relationships (orchestras) based on list of ids from model
             var newOrchestras = new List<Orchestra>();
             foreach (var id in countryUpdateViewModel.OrchestraIds)
             {
@@ -152,7 +157,7 @@ namespace Project.Controllers
                 Orchestras = newOrchestras,
             };
 
-            // update country
+            // update country in database
             this.inMemoryData.UpdateCountry(newCountry);
             return NoContent(); // 204
         }
@@ -161,7 +166,7 @@ namespace Project.Controllers
 
         [HttpDelete()]
         [Route("countries/{code}")]
-        public IActionResult DeleteRouteMethod(string code)
+        public IActionResult DeleteCountry(string code)
         {
             // check if country exists
             var country = this.inMemoryData.GetCountry(code);
@@ -170,7 +175,7 @@ namespace Project.Controllers
                 return NotFound("Country not found."); // 404
             }
 
-            // delete country
+            // delete country in database
             this.inMemoryData.DeleteCountry(country);
             return NoContent(); // 204
         }
@@ -244,7 +249,7 @@ namespace Project.Controllers
             {
                 Name = orchestraCreateViewModel.Name,
                 Conductor = orchestraCreateViewModel.Conductor,
-                Musicians = new List<Musician>(), // initialize list
+                Musicians = new List<Musician>(),
             };
 
             this.inMemoryData.AddOrchestra(newOrchestra);
@@ -268,13 +273,10 @@ namespace Project.Controllers
                 return NotFound("Orchestra not found."); // 404
             }
 
-            // get list of musicians based on list of ids
             var newMusicians = new List<Musician>();
             foreach (var musicianId in orchestraUpdateViewModel.MusicianIds)
             {
                 var newMusician = this.inMemoryData.GetMusician(musicianId);
-
-                // check if musician exists
                 if (newMusician == null)
                 {
                     return NotFound($"Musician {id} not found.");
@@ -380,7 +382,7 @@ namespace Project.Controllers
             {
                 Name = musicianCreateViewModel.Name,
                 Instrument = musicianCreateViewModel.Instrument,
-                Orchestras = new List<Orchestra>(), // initialize list
+                Orchestras = new List<Orchestra>(),
             };
 
             this.inMemoryData.AddMusician(newMusician);
@@ -404,13 +406,10 @@ namespace Project.Controllers
                 return NotFound("Musician not found."); // 404
             }
 
-            // get list of orchestras based on list of ids
             var newOrchestras = new List<Orchestra>();
             foreach (var orchestraId in musicianUpdateViewModel.OrchestraIds)
             {
                 var newOrchestra = this.inMemoryData.GetOrchestra(orchestraId);
-
-                // check if orchestra exists
                 if (newOrchestra == null)
                 {
                     return NotFound($"Orchestra {id} not found.");
@@ -424,7 +423,7 @@ namespace Project.Controllers
                 Id = oldMusician.Id,
                 Name = musicianUpdateViewModel.Name,
                 Instrument = musicianUpdateViewModel.Instrument,
-                Orchestras = oldMusician.Orchestras, // list of orchestras is updated in method below
+                Orchestras = newOrchestras,
             };
 
             this.inMemoryData.UpdateMusician(newMusician);

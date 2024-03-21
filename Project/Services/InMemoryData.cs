@@ -63,11 +63,11 @@ namespace Project.Services
             var michaela = new Musician { Id = 18, Name = "Michaela Bužková", Instrument = Instruments.Horn, Orchestras = new List<Orchestra>() };
             var alain = new Musician { Id = 19, Name = "Alain De Rudder", Instrument = Instruments.Trumpet, Orchestras = new List<Orchestra>() };
             var daniel = new Musician { Id = 20, Name = "Daniel Quiles Cascant", Instrument = Instruments.Trombone, Orchestras = new List<Orchestra>() };
-            var bernd = new Musician { Id = 21, Name = "Bernd van Echelpoe", Instrument = Instruments.Tuba, Orchestras = new List<Orchestra>() };
+            var bernd = new Musician { Id = 21, Name = "Bernd van Echelpoel", Instrument = Instruments.Tuba, Orchestras = new List<Orchestra>() };
             var pieterjan = new Musician { Id = 22, Name = "Pieterjan Vrankx", Instrument = Instruments.Percussion, Orchestras = new List<Orchestra>() };
             var cristiano = new Musician { Id = 23, Name = "Cristiano Menegazzo", Instrument = Instruments.Percussion, Orchestras = new List<Orchestra>() };
 
-            // adding country orchestras data
+            // adding country relationships data
 
             belgium.Orchestras.Add(antwerpSymphonyOrchestra);
             belgium.Orchestras.Add(brusselsPhilharmonic);
@@ -78,7 +78,7 @@ namespace Project.Services
             netherlands.Orchestras.Add(amsterdamSinfonietta);
             uk.Orchestras.Add(londonPhilharmonicOrchestra);
 
-            // adding orchestra musicians data
+            // adding orchestra relationships data
 
             antwerpSymphonyOrchestra.Musicians.Add(maria);
             antwerpSymphonyOrchestra.Musicians.Add(christophe);
@@ -112,7 +112,7 @@ namespace Project.Services
             londonPhilharmonicOrchestra.Musicians.Add(sander);
             muncherPhilharmoniker.Musicians.Add(raphael);
 
-            // adding musician orchestras data
+            // adding musician relationships data
 
             sylvia.Orchestras.Add(symfonieorkestVanDeMunt);
             maria.Orchestras.Add(antwerpSymphonyOrchestra);
