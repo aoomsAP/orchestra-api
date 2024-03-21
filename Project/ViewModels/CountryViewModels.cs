@@ -25,12 +25,5 @@ namespace Project.ViewModels
 
         [Required]
         public IEnumerable<int> OrchestraIds { get; set; }
-
     }
-
-    //public class CountryUpdateOrchestrasViewModel
-    //{
-    //    [Required]
-    //    public IEnumerable<int> OrchestraIds { get; set; }
-    //}
 }

@@ -137,13 +137,13 @@ namespace Project.Controllers
 
             // get list of relationships (orchestras) based on list of ids from model
             var newOrchestras = new List<Orchestra>();
-            foreach (var id in countryUpdateViewModel.OrchestraIds)
+            foreach (var orchestraId in countryUpdateViewModel.OrchestraIds)
             {
                 // check if orchestra exists
-                var newOrchestra = this.inMemoryData.GetOrchestra(id);
+                var newOrchestra = this.inMemoryData.GetOrchestra(orchestraId);
                 if (newOrchestra == null)
                 {
-                    return NotFound($"Orchestra {id} not found.");
+                    return NotFound($"Orchestra {orchestraId} not found.");
                 }
 
                 newOrchestras.Add(newOrchestra);
@@ -279,7 +279,7 @@ namespace Project.Controllers
                 var newMusician = this.inMemoryData.GetMusician(musicianId);
                 if (newMusician == null)
                 {
-                    return NotFound($"Musician {id} not found.");
+                    return NotFound($"Musician {musicianId} not found.");
                 }
 
                 newMusicians.Add(newMusician);
@@ -303,13 +303,13 @@ namespace Project.Controllers
         [Route("orchestras/{id}")]
         public IActionResult DeleteOrchestra(int id)
         {
-            var newOrchestra = this.inMemoryData.GetOrchestra(id);
-            if (newOrchestra == null)
+            var orchestra = this.inMemoryData.GetOrchestra(id);
+            if (orchestra == null)
             {
                 return NotFound("Orchestra not found."); // 404
             }
 
-            this.inMemoryData.DeleteOrchestra(newOrchestra);
+            this.inMemoryData.DeleteOrchestra(orchestra);
             return NoContent(); // 204
         }
 
@@ -412,7 +412,7 @@ namespace Project.Controllers
                 var newOrchestra = this.inMemoryData.GetOrchestra(orchestraId);
                 if (newOrchestra == null)
                 {
-                    return NotFound($"Orchestra {id} not found.");
+                    return NotFound($"Orchestra {orchestraId} not found.");
                 }
 
                 newOrchestras.Add(newOrchestra);
@@ -436,13 +436,13 @@ namespace Project.Controllers
         [Route("musicians/{id}")]
         public IActionResult DeleteMusician(int id)
         {
-            var newMusician = this.inMemoryData.GetMusician(id);
-            if (newMusician == null)
+            var musician = this.inMemoryData.GetMusician(id);
+            if (musician == null)
             {
                 return NotFound("Musician not found."); // 404
             }
 
-            this.inMemoryData.DeleteMusician(newMusician);
+            this.inMemoryData.DeleteMusician(musician);
             return NoContent(); // 204
         }
     }
