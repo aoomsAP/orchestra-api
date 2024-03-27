@@ -221,6 +221,28 @@ namespace Project.Services
             updatedOrchestra.Name = orchestra.Name;
             updatedOrchestra.Conductor = orchestra.Conductor;
             updatedOrchestra.Musicians = orchestra.Musicians;
+
+            // go through all musicians
+            foreach (var musician in musicians)
+            {
+                // if the updated orchestra doesn't have this musician listed,
+                // that means that musician-orchestra relationship was deleted
+                // therefore orchestra should be deleted from list of orchestras
+                if (updatedOrchestra.Musicians.FirstOrDefault(x => x.Id == musician.Id) == null)
+                {
+                    musician.Orchestras.Remove(musician.Orchestras.FirstOrDefault(x => x.Id == updatedOrchestra.Id));
+                }
+                // if the updated orchestra DOES have the musician listed
+                // that means there is a musician-orchestra relationship
+                else
+                {
+                    // if musician doesn't have orchestra in list yet, add it to list
+                    if (musician.Orchestras.FirstOrDefault(x => x.Id == updatedOrchestra.Id) == null)
+                    {
+                        musician.Orchestras.Add(updatedOrchestra);
+                    }
+                }
+            }
         }
 
         // musician data
@@ -248,10 +270,33 @@ namespace Project.Services
 
         public void UpdateMusician(Musician musician)
         {
-            var oldMusician = musicians.FirstOrDefault(x => x.Id == musician.Id);
-            oldMusician.Name = musician.Name;
-            oldMusician.Instrument = musician.Instrument;
-            oldMusician.Orchestras = musician.Orchestras;
+            var updatedMusician = musicians.FirstOrDefault(x => x.Id == musician.Id);
+            updatedMusician.Name = musician.Name;
+            updatedMusician.Instrument = musician.Instrument;
+            updatedMusician.Orchestras = musician.Orchestras;
+
+            // go through all orchestras
+            foreach (var orchestra in orchestras)
+            {
+                // if the updated musician doesn't have this orchestra listed,
+                // that means that musician-orchestra relationship was deleted
+                // therefore musician should be deleted from list of musicians
+                if (updatedMusician.Orchestras.FirstOrDefault(x => x.Id == orchestra.Id) == null)
+                {
+                    orchestra.Musicians.Remove(orchestra.Musicians.FirstOrDefault(x => x.Id == updatedMusician.Id));
+                }
+                // if the updated musician DOES have the orchestra listed
+                // that means there is a musician-orchestra relationship
+                else
+                {
+                    // if musician doesn't have orchestra in list yet, add it to list
+                    if (orchestra.Musicians.FirstOrDefault(x => x.Id == updatedMusician.Id) == null)
+                    {
+                        orchestra.Musicians.Add(updatedMusician);
+                    }
+                }
+            }
+
         }
     }
 }
