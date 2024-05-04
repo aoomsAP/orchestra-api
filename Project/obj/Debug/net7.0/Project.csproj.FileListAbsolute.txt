@@ -31,3 +31,13 @@ C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikke
 C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\obj\Debug\net7.0\Project.genruntimeconfig.cache
 C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\obj\Debug\net7.0\ref\Project.dll
 C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\obj\Debug\net7.0\Project.sourcelink.json
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\Humanizer.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\MySqlConnector.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Project\bin\Debug\net7.0\System.CodeDom.dll

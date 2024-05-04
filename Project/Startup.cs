@@ -1,4 +1,6 @@
-﻿using Project.Services;
+﻿using Microsoft.EntityFrameworkCore;
+using Project.Entities;
+using Project.Services;
 
 namespace Project
 {
@@ -9,7 +11,13 @@ namespace Project
         {
             services.AddControllers();
             services.AddSwaggerGen();
-            services.AddScoped<IData, InMemoryData>();
+            //services.AddScoped<IData, InMemoryData>();
+            services.AddScoped<IData, EfData>();
+
+            // Database connection
+
+            var connection = "server=localhost; database=orchestra-db; user=root; password=password";
+            services.AddDbContext<DataContext>(x => x.UseMySql(connection, ServerVersion.AutoDetect(connection)));
         }
 
         // The below method gets called by runtime

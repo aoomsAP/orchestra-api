@@ -11,6 +11,14 @@
 
     public class Musician
     {
+        // Entity Framework returns empty list as null
+        // therefore it is advised to initialize the list in the constructor of the entity
+        // https://stackoverflow.com/questions/9246729/why-does-entity-framework-return-null-list-instead-of-empty-ones
+        //public Musician()
+        //{
+        //    Orchestras = new List<Orchestra>();
+        //}
+
         public int Id { get; set; }
 
         public string Name { get; set; }
