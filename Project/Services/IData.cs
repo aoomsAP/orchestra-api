@@ -11,6 +11,7 @@ namespace Project.Services
         void AddCountry(Country country);
         void DeleteCountry(Country country);
         void UpdateCountry(Country country);
+        void UpdateCountryOrchestras(Country country);
 
         // Orchestra Data
 
@@ -19,6 +20,7 @@ namespace Project.Services
         void AddOrchestra(Orchestra orchestra);
         void DeleteOrchestra(Orchestra orchestra);
         void UpdateOrchestra(Orchestra orchestra);
+        void UpdateOrchestraMusicians(Orchestra orchestra);
 
         // Musician Data
 
@@ -27,5 +29,6 @@ namespace Project.Services
         void AddMusician(Musician musician);
         void DeleteMusician(Musician musician);
         void UpdateMusician(Musician musician);
+        void UpdateMusicianOrchestras(Musician musician);
     }
 }

@@ -96,6 +96,27 @@
   },
   {
     "ContainingType": "Project.Controllers.APIController",
+    "Method": "UpdateCountryOrchestras",
+    "RelativePath": "api/countries/{code}/orchestras",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "viewModel",
+        "Type": "Project.ViewModels.CountryOrchestrasUpdateViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
     "Method": "GetMusicianAll",
     "RelativePath": "api/musicians",
     "HttpMethod": "GET",
@@ -191,6 +212,27 @@
   },
   {
     "ContainingType": "Project.Controllers.APIController",
+    "Method": "UpdateMusicianOrchestras",
+    "RelativePath": "api/musicians/{id}/orchestras",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "viewModel",
+        "Type": "Project.ViewModels.MusicianOrchestrasUpdateViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
     "Method": "GetOrchestraAll",
     "RelativePath": "api/orchestras",
     "HttpMethod": "GET",
@@ -279,6 +321,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Project.Controllers.APIController",
+    "Method": "UpdateOrchestraMusicians",
+    "RelativePath": "api/orchestras/{id}/musicians",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "viewModel",
+        "Type": "Project.ViewModels.OrchestraMusiciansUpdateViewModel",
         "IsRequired": true
       }
     ],

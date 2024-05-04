@@ -135,9 +135,39 @@ namespace Project.Controllers
                 return NotFound("Country not found."); // 404
             }
 
+            // create new country with updated values
+            var newCountry = new Country
+            {
+                Code = oldCountry.Code,
+                Name = countryUpdateViewModel.Name,
+                Orchestras = oldCountry.Orchestras,
+            };
+
+            // update country in database
+            this.inMemoryData.UpdateCountry(newCountry);
+            return NoContent(); // 204
+        }
+
+        [HttpPut()]
+        [Route("countries/{code}/orchestras")]
+        public IActionResult UpdateCountryOrchestras(string code, [FromBody] CountryOrchestrasUpdateViewModel viewModel)
+        {
+            // check if model is valid
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            };
+
+            // check if country exists
+            var oldCountry = this.inMemoryData.GetCountry(code);
+            if (oldCountry == null)
+            {
+                return NotFound("Country not found."); // 404
+            }
+
             // get list of relationships (orchestras) based on list of ids from model
             var newOrchestras = new List<Orchestra>();
-            foreach (var orchestraId in countryUpdateViewModel.OrchestraIds)
+            foreach (var orchestraId in viewModel.OrchestraIds)
             {
                 // check if orchestra exists
                 var newOrchestra = this.inMemoryData.GetOrchestra(orchestraId);
@@ -153,12 +183,12 @@ namespace Project.Controllers
             var newCountry = new Country
             {
                 Code = oldCountry.Code,
-                Name = countryUpdateViewModel.Name,
+                Name = oldCountry.Name,
                 Orchestras = newOrchestras,
             };
 
             // update country in database
-            this.inMemoryData.UpdateCountry(newCountry);
+            this.inMemoryData.UpdateCountryOrchestras(newCountry);
             return NoContent(); // 204
         }
 
@@ -258,6 +288,8 @@ namespace Project.Controllers
 
         // UPDATE
 
+        // updates an orchestra
+        // expects the orchestra name & the orchestra conductor
         [HttpPut()]
         [Route("orchestras/{id}")]
         public IActionResult UpdateOrchestra(int id, [FromBody] OrchestraUpdateViewModel orchestraUpdateViewModel)
@@ -273,27 +305,56 @@ namespace Project.Controllers
                 return NotFound("Orchestra not found."); // 404
             }
 
-            var newMusicians = new List<Musician>();
-            foreach (var musicianId in orchestraUpdateViewModel.MusicianIds)
+            var newOrchestra = new Orchestra
+            {
+                Id = oldOrchestra.Id,
+                Name = orchestraUpdateViewModel.Name,
+                Conductor = orchestraUpdateViewModel.Conductor,
+                Musicians = oldOrchestra.Musicians,
+            };
+
+            this.inMemoryData.UpdateOrchestra(newOrchestra);
+            return NoContent(); // 204
+        }
+
+        // updates the list of musicians for an orchestra
+        // expects a list of musician ids
+        [HttpPut()]
+        [Route("orchestras/{id}/musicians")]
+        public IActionResult UpdateOrchestraMusicians(int id, [FromBody] OrchestraMusiciansUpdateViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            };
+
+            var oldOrchestra = this.inMemoryData.GetOrchestra(id);
+            if (oldOrchestra == null)
+            {
+                return NotFound("Orchestra not found."); // 404
+            }
+
+            // check if musician ids refer to musicians that exist
+            var updatedMusicians = new List<Musician>();
+            foreach (var musicianId in viewModel.MusicianIds)
             {
                 var newMusician = this.inMemoryData.GetMusician(musicianId);
                 if (newMusician == null)
                 {
                     return NotFound($"Musician {musicianId} not found.");
                 }
-
-                newMusicians.Add(newMusician);
+                updatedMusicians.Add(newMusician);
             }
 
             var newOrchestra = new Orchestra
             {
                 Id = oldOrchestra.Id,
-                Name = orchestraUpdateViewModel.Name,
-                Conductor = orchestraUpdateViewModel.Conductor,
-                Musicians = newMusicians,
+                Name = oldOrchestra.Name,
+                Conductor = oldOrchestra.Conductor,
+                Musicians = updatedMusicians,
             };
 
-            this.inMemoryData.UpdateOrchestra(newOrchestra);
+            this.inMemoryData.UpdateOrchestraMusicians(newOrchestra);
             return NoContent(); // 204
         }
 
@@ -391,6 +452,8 @@ namespace Project.Controllers
 
         // UPDATE
 
+        // updates a musician
+        // expects the musician name & the musician instrument
         [HttpPut()]
         [Route("musicians/{id}")]
         public IActionResult UpdateMusician(int id, [FromBody] MusicianUpdateViewModel musicianUpdateViewModel)
@@ -406,8 +469,38 @@ namespace Project.Controllers
                 return NotFound("Musician not found."); // 404
             }
 
+            var newMusician = new Musician
+            {
+                Id = oldMusician.Id,
+                Name = musicianUpdateViewModel.Name,
+                Instrument = musicianUpdateViewModel.Instrument,
+                Orchestras = oldMusician.Orchestras,
+            };
+
+            this.inMemoryData.UpdateMusician(newMusician);
+            return NoContent(); // 204
+        }
+
+        // updates the list of orchestras for a musician
+        // expects a list of orchestra ids
+        [HttpPut()]
+        [Route("musicians/{id}/orchestras")]
+        public IActionResult UpdateMusicianOrchestras(int id, [FromBody] MusicianOrchestrasUpdateViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            };
+
+            var oldMusician = this.inMemoryData.GetMusician(id);
+            if (oldMusician == null)
+            {
+                return NotFound("Musician not found."); // 404
+            }
+
+            // check if orchestra ids refer to orchestras that exist
             var newOrchestras = new List<Orchestra>();
-            foreach (var orchestraId in musicianUpdateViewModel.OrchestraIds)
+            foreach (var orchestraId in viewModel.OrchestraIds)
             {
                 var newOrchestra = this.inMemoryData.GetOrchestra(orchestraId);
                 if (newOrchestra == null)
@@ -421,12 +514,12 @@ namespace Project.Controllers
             var newMusician = new Musician
             {
                 Id = oldMusician.Id,
-                Name = musicianUpdateViewModel.Name,
-                Instrument = musicianUpdateViewModel.Instrument,
+                Name = oldMusician.Name,
+                Instrument = oldMusician.Instrument,
                 Orchestras = newOrchestras,
             };
 
-            this.inMemoryData.UpdateMusician(newMusician);
+            this.inMemoryData.UpdateMusicianOrchestras(newMusician);
             return NoContent(); // 204
         }
 

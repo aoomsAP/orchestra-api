@@ -24,7 +24,10 @@ namespace Project.ViewModels
 
         [Required]
         public string Conductor { get; set; }
+    }
 
+    public class OrchestraMusiciansUpdateViewModel
+    {
         [Required]
         public IEnumerable<int> MusicianIds { get; set; }
     }

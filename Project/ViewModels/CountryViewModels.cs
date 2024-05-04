@@ -22,7 +22,10 @@ namespace Project.ViewModels
     {
         [Required]
         public string Name { get; set; }
+    }
 
+    public class CountryOrchestrasUpdateViewModel
+    {
         [Required]
         public IEnumerable<int> OrchestraIds { get; set; }
     }
