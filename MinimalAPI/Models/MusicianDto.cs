@@ -1,4 +1,5 @@
 ﻿using Project.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace MinimalAPI.Models
 {
@@ -7,6 +8,21 @@ namespace MinimalAPI.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public Instruments Instrument { get; set; }
+    }
 
+    public class MusicianCreationDto
+    {
+        [Required]
+        public string Name { get; set; }
+
+        public Instruments Instrument { get; set; }
+    }
+
+    public class MusicianUpdateDto
+    {
+        [Required]
+        public string Name { get; set; }
+
+        public Instruments Instrument { get; set; }
     }
 }
