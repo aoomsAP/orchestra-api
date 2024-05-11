@@ -1,0 +1,15 @@
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\bin\Debug\net7.0\Library.deps.json
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\bin\Debug\net7.0\Library.runtimeconfig.json
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\bin\Debug\net7.0\Library.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\bin\Debug\net7.0\Library.pdb
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\Library.csproj.AssemblyReference.cache
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\Library.AssemblyInfoInputs.cache
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\Library.AssemblyInfo.cs
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\Library.csproj.CoreCompileInputs.cache
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\Library.sourcelink.json
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\Library.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\refint\Library.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\Library.pdb
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\Library.genruntimeconfig.cache
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\Library\obj\Debug\net7.0\ref\Library.dll
