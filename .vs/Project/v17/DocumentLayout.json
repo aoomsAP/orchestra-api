@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\services\\inmemorydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\services\\inmemorydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\services\\efdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\services\\efdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\services\\idata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\services\\idata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\viewmodels\\orchestraviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\viewmodels\\orchestraviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\viewmodels\\musicianviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\viewmodels\\musicianviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\viewmodels\\countryviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\viewmodels\\countryviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\entities\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,40 +35,20 @@
       "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\controllers\\apicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\entities\\musician.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\entities\\musician.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\entities\\orchestra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\entities\\orchestra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\services\\idata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\services\\idata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\services\\inmemorydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\services\\inmemorydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\entities\\musician.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\entities\\musician.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\viewmodels\\countryviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\viewmodels\\countryviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\entities\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\entities\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\viewmodels\\musicianviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\viewmodels\\musicianviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\viewmodels\\orchestraviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|solutionrelative:project\\viewmodels\\orchestraviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{316ADF97-9283-4F0F-87C9-2AB03EFAE4B6}|Project\\Project.csproj|c:\\users\\32473\\documents\\- graduaat programmeren\\jaar 2 (2023-2024)\\api ontwikkeling\\project\\project\\project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -69,96 +69,31 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 506,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 475,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "APIController.cs",
-              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Controllers\\APIController.cs",
-              "RelativeDocumentMoniker": "Project\\Controllers\\APIController.cs",
-              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Controllers\\APIController.cs",
-              "RelativeToolTip": "Project\\Controllers\\APIController.cs",
-              "ViewState": "AQIAAJoBAAAAAAAAAADgv6kBAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-18T23:49:27.394Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Country.cs",
               "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Country.cs",
               "RelativeDocumentMoniker": "Project\\Entities\\Country.cs",
               "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Country.cs",
               "RelativeToolTip": "Project\\Entities\\Country.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAPAAAA",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAAAAkAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-27T02:22:50.175Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Musician.cs",
-              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Musician.cs",
-              "RelativeDocumentMoniker": "Project\\Entities\\Musician.cs",
-              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Musician.cs",
-              "RelativeToolTip": "Project\\Entities\\Musician.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwB4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T05:05:24.026Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EfData.cs",
-              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\EfData.cs",
-              "RelativeDocumentMoniker": "Project\\Services\\EfData.cs",
-              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\EfData.cs",
-              "RelativeToolTip": "Project\\Services\\EfData.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAwwEQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T15:36:42.542Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Orchestra.cs",
-              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Orchestra.cs",
-              "RelativeDocumentMoniker": "Project\\Entities\\Orchestra.cs",
-              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Orchestra.cs",
-              "RelativeToolTip": "Project\\Entities\\Orchestra.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T04:42:21.116Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IData.cs",
-              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\IData.cs",
-              "RelativeDocumentMoniker": "Project\\Services\\IData.cs",
-              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\IData.cs",
-              "RelativeToolTip": "Project\\Services\\IData.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAwwAkAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-19T03:44:05.457Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "InMemoryData.cs",
               "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\InMemoryData.cs",
               "RelativeDocumentMoniker": "Project\\Services\\InMemoryData.cs",
               "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\InMemoryData.cs",
               "RelativeToolTip": "Project\\Services\\InMemoryData.cs",
-              "ViewState": "AQIAANcAAAAAAAAAAAAUwCsBAAAAAAAA",
+              "ViewState": "AQIAAB4BAAAAAAAAAAAzwDQBAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T18:55:46.233Z",
               "EditorCaption": ""
@@ -166,30 +101,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Startup.cs",
-              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Startup.cs",
-              "RelativeDocumentMoniker": "Project\\Startup.cs",
-              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Startup.cs",
-              "RelativeToolTip": "Project\\Startup.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAiAAAA",
+              "Title": "APIController.cs",
+              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Controllers\\APIController.cs",
+              "RelativeDocumentMoniker": "Project\\Controllers\\APIController.cs",
+              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Controllers\\APIController.cs",
+              "RelativeToolTip": "Project\\Controllers\\APIController.cs",
+              "ViewState": "AQIAAOcBAAAAAAAAAIA3wPkBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-27T00:53:03.024Z"
+              "WhenOpened": "2024-03-18T23:49:27.394Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "CountryViewModels.cs",
               "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\CountryViewModels.cs",
               "RelativeDocumentMoniker": "Project\\ViewModels\\CountryViewModels.cs",
               "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\CountryViewModels.cs",
               "RelativeToolTip": "Project\\ViewModels\\CountryViewModels.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAwBsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T03:04:59.323Z"
+              "WhenOpened": "2024-03-12T03:04:59.323Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "DataContext.cs",
               "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\DataContext.cs",
               "RelativeDocumentMoniker": "Project\\Entities\\DataContext.cs",
@@ -198,6 +135,94 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-04T15:34:03.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MusicianViewModels.cs",
+              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\MusicianViewModels.cs",
+              "RelativeDocumentMoniker": "Project\\ViewModels\\MusicianViewModels.cs",
+              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\MusicianViewModels.cs",
+              "RelativeToolTip": "Project\\ViewModels\\MusicianViewModels.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAYwCMAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T01:25:34.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrchestraViewModels.cs",
+              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\OrchestraViewModels.cs",
+              "RelativeDocumentMoniker": "Project\\ViewModels\\OrchestraViewModels.cs",
+              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\OrchestraViewModels.cs",
+              "RelativeToolTip": "Project\\ViewModels\\OrchestraViewModels.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-12T03:05:11.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IData.cs",
+              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\IData.cs",
+              "RelativeDocumentMoniker": "Project\\Services\\IData.cs",
+              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\IData.cs",
+              "RelativeToolTip": "Project\\Services\\IData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-19T03:44:05.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EfData.cs",
+              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\EfData.cs",
+              "RelativeDocumentMoniker": "Project\\Services\\EfData.cs",
+              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Services\\EfData.cs",
+              "RelativeToolTip": "Project\\Services\\EfData.cs",
+              "ViewState": "AQIAAKIAAAAAAAAAAAA1wEIAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T15:36:42.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Musician.cs",
+              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Musician.cs",
+              "RelativeDocumentMoniker": "Project\\Entities\\Musician.cs",
+              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Musician.cs",
+              "RelativeToolTip": "Project\\Entities\\Musician.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwBsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-27T05:05:24.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Startup.cs",
+              "RelativeDocumentMoniker": "Project\\Startup.cs",
+              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Startup.cs",
+              "RelativeToolTip": "Project\\Startup.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-27T00:53:03.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Orchestra.cs",
+              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Orchestra.cs",
+              "RelativeDocumentMoniker": "Project\\Entities\\Orchestra.cs",
+              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\Entities\\Orchestra.cs",
+              "RelativeToolTip": "Project\\Entities\\Orchestra.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-27T04:42:21.116Z"
             },
             {
               "$type": "Document",
@@ -210,30 +235,6 @@
               "ViewState": "AQIAAEMAAAAAAAAAAAAQwBIAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-04T16:47:43.759Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "MusicianViewModels.cs",
-              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\MusicianViewModels.cs",
-              "RelativeDocumentMoniker": "Project\\ViewModels\\MusicianViewModels.cs",
-              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\MusicianViewModels.cs",
-              "RelativeToolTip": "Project\\ViewModels\\MusicianViewModels.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAYwCMAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T01:25:34.86Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "OrchestraViewModels.cs",
-              "DocumentMoniker": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\OrchestraViewModels.cs",
-              "RelativeDocumentMoniker": "Project\\ViewModels\\OrchestraViewModels.cs",
-              "ToolTip": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\ViewModels\\OrchestraViewModels.cs",
-              "RelativeToolTip": "Project\\ViewModels\\OrchestraViewModels.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwCEAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-12T03:05:11.283Z"
             },
             {
               "$type": "Document",
@@ -267,6 +268,10 @@
           "Children": [
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
@@ -276,7 +281,7 @@
           ]
         },
         {
-          "DockedWidth": 113,
+          "DockedWidth": 144,
           "SelectedChildIndex": -1,
           "Children": [
             {
