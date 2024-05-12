@@ -10,9 +10,9 @@ namespace Project.Entities
 
         public string Name { get; set; }
 
-        public string Conductor { get; set; }
+        public string? Conductor { get; set; }
 
-        public Country Country { get; set; }
+        public Country? Country { get; set; }
 
         public ICollection<Musician> Musicians { get; set; } = new List<Musician>();
     }

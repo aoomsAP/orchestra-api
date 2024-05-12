@@ -25,4 +25,9 @@ namespace MinimalAPI.Models
 
         public Instruments Instrument { get; set; }
     }
+
+    public class MusicianOrchestrasUpdateDto
+    {
+        public ICollection<int> OrchestraIds { get; set; }
+    }
 }

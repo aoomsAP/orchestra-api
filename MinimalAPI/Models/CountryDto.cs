@@ -10,7 +10,7 @@ namespace MinimalAPI.Models
 
     public class CountryCreationDto
     {
-        [Required, MaxLength(2), RegularExpression("^[A-Z]{2}$")]
+        [Required, RegularExpression("^[A-Z]{2}$")]
         public string Code { get; set; }
 
         [Required]
@@ -20,5 +20,10 @@ namespace MinimalAPI.Models
     public class CountryUpdateDto
     {
         public string Name { get; set; }
+    }
+
+    public class CountryOrchestrasUpdateDto
+    {
+        public ICollection<int> OrchestraIds { get; set; }
     }
 }

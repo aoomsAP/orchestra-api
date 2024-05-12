@@ -160,6 +160,11 @@ namespace MinimalAPI.Migrations
                         },
                         new
                         {
+                            MusiciansId = 1,
+                            OrchestrasId = 4
+                        },
+                        new
+                        {
                             MusiciansId = 4,
                             OrchestrasId = 4
                         },
@@ -421,11 +426,9 @@ namespace MinimalAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Conductor")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("CountryCode")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("Name")
@@ -516,9 +519,7 @@ namespace MinimalAPI.Migrations
                 {
                     b.HasOne("Project.Entities.Country", "Country")
                         .WithMany("Orchestras")
-                        .HasForeignKey("CountryCode")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CountryCode");
 
                     b.Navigation("Country");
                 });

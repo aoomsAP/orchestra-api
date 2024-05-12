@@ -98,6 +98,7 @@ namespace Project.Entities
                     new { OrchestrasId = 2, MusiciansId = 2 },
                     new { OrchestrasId = 2, MusiciansId = 10 },
                     new { OrchestrasId = 3, MusiciansId = 4 },
+                    new { OrchestrasId = 4, MusiciansId = 1 },
                     new { OrchestrasId = 4, MusiciansId = 4 },
                     new { OrchestrasId = 5, MusiciansId = 4 },
                     new { OrchestrasId = 6, MusiciansId = 6 },

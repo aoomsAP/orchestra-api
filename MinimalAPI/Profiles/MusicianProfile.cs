@@ -9,6 +9,7 @@ namespace MinimalAPI.Profiles
         public MusicianProfile() 
         {
             CreateMap<Musician, MusicianDto>();
+            CreateMap<MusicianCreationDto, Musician>();
         }
     }
 }

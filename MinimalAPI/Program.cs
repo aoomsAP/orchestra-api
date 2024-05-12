@@ -1,8 +1,10 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Models;
 using Project.Entities;
+using System.ComponentModel.DataAnnotations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,7 +63,9 @@ var musicianWithIdEndpoints = app.MapGroup("/musicians/{musicianid}");
 var musicianOrchestrasEndpoints = app.MapGroup("/musicians/{musicianid}/orchestras");
 
 
-// Country
+// Country --------------------------------------------------------------------------------
+
+// get
 
 countryEndpoints.MapGet("", Ok<IEnumerable<CountryDto>> (
     DataContext dbContext,
@@ -73,7 +77,7 @@ countryEndpoints.MapGet("", Ok<IEnumerable<CountryDto>> (
 
 countryWithCodeEndpoints.MapGet("", Results<Ok<CountryDto>, NotFound> (
     DataContext dbContext,
-    string countrycode,
+    [RegularExpression("^[A-Z]{2}$")] string countrycode,
     IMapper mapper
     ) =>
 {
@@ -87,12 +91,19 @@ countryWithCodeEndpoints.MapGet("", Results<Ok<CountryDto>, NotFound> (
     return TypedResults.Ok(mapper.Map<CountryDto>(country));
 }).WithName("GetCountry");
 
-countryOrchestraEndpoints.MapGet("", Ok<IEnumerable<OrchestraDto>> (
+countryOrchestraEndpoints.MapGet("", Results<Ok<IEnumerable<OrchestraDto>>, NotFound> (
     DataContext dbContext,
-    string countrycode,
+    [RegularExpression("^[A-Z]{2}$")] string countrycode,
     IMapper mapper
     ) =>
 {
+    var country = dbContext.Countries.FirstOrDefault(x => x.Code == countrycode);
+
+    if (country == null)
+    {
+        return TypedResults.NotFound();
+    }
+
     var orchestras = dbContext.Countries
         .Include(x => x.Orchestras)
         .FirstOrDefault(x => x.Code == countrycode)?.Orchestras;
@@ -100,12 +111,16 @@ countryOrchestraEndpoints.MapGet("", Ok<IEnumerable<OrchestraDto>> (
     return TypedResults.Ok(mapper.Map<IEnumerable<OrchestraDto>>(orchestras));
 });
 
+// post
+
 countryEndpoints.MapPost("", CreatedAtRoute<CountryDto> (
     DataContext dbContext,
     IMapper mapper,
     CountryCreationDto creationDto
     ) =>
 {
+    // how to validate dto? and return BadRequest?
+
     var country = mapper.Map<Country>(creationDto);
     dbContext.Countries.Add(country);
     dbContext.SaveChanges();
@@ -114,13 +129,17 @@ countryEndpoints.MapPost("", CreatedAtRoute<CountryDto> (
     return TypedResults.CreatedAtRoute(countryToReturn, "GetCountry", new { countrycode = countryToReturn.Code });
 });
 
+// put
+
 countryWithCodeEndpoints.MapPut("", Results<NotFound, NoContent> (
     DataContext dbContext,
     IMapper mapper,
-    string countrycode,
+    [RegularExpression("^[A-Z]{2}$")] string countrycode,
     CountryUpdateDto updateDto
     ) =>
 {
+    // how to validate dto? and return BadRequest?
+
     var country = dbContext.Countries
         .FirstOrDefault(c => c.Code == countrycode);
     if (country == null)
@@ -133,6 +152,42 @@ countryWithCodeEndpoints.MapPut("", Results<NotFound, NoContent> (
 
     return TypedResults.NoContent();
 });
+
+countryOrchestraEndpoints.MapPut("", Results<NotFound, NoContent> (
+    DataContext dbContext,
+    IMapper mapper,
+    [RegularExpression("^[A-Z]{2}$")] string countrycode,
+    CountryOrchestrasUpdateDto updateDto
+    ) =>
+{
+    // how to validate dto? and return BadRequest?
+
+    var country = dbContext.Countries
+        .Include(m => m.Orchestras)
+        .FirstOrDefault(m => m.Code == countrycode);
+    if (country == null)
+    {
+        return TypedResults.NotFound();
+    }
+
+    var newOrchestras = new List<Orchestra>();
+    foreach (var orchestraid in updateDto.OrchestraIds)
+    {
+        var newOrchestra = dbContext.Orchestras.FirstOrDefault(o => o.Id == orchestraid);
+        if (newOrchestra == null)
+        {
+            return TypedResults.NotFound();
+        }
+        newOrchestras.Add(newOrchestra);
+    }
+
+    country.Orchestras = newOrchestras;
+    dbContext.SaveChanges();
+
+    return TypedResults.NoContent();
+});
+
+// delete
 
 countryWithCodeEndpoints.MapDelete("", Results<NotFound, NoContent> (
     DataContext dbContext,
@@ -153,14 +208,16 @@ countryWithCodeEndpoints.MapDelete("", Results<NotFound, NoContent> (
 });
 
 
-// Orchestra
+// Orchestra --------------------------------------------------------------------------------
+
+// get
 
 orchestraEndpoints.MapGet("", Ok<IEnumerable<OrchestraDto>> (
     DataContext dbContext,
     IMapper mapper
     ) =>
 {
-    return TypedResults.Ok(mapper.Map<IEnumerable<OrchestraDto>>(dbContext.Orchestras));
+    return TypedResults.Ok(mapper.Map<IEnumerable<OrchestraDto>>(dbContext.Orchestras.Include(o => o.Country)));
 });
 
 orchestraWithIdEndpoints.MapGet("", Results<Ok<OrchestraDto>, NotFound> (
@@ -179,12 +236,19 @@ orchestraWithIdEndpoints.MapGet("", Results<Ok<OrchestraDto>, NotFound> (
     return TypedResults.Ok(mapper.Map<OrchestraDto>(orchestra));
 }).WithName("GetOrchestra");
 
-orchestraMusiciansEndpoints.MapGet("", Ok<IEnumerable<MusicianDto>> (
+orchestraMusiciansEndpoints.MapGet("", Results<Ok<IEnumerable<MusicianDto>>, NotFound> (
     DataContext dbContext,
     int orchestraid,
     IMapper mapper
     ) =>
 {
+    var orchestra = dbContext.Orchestras.FirstOrDefault(x => x.Id == orchestraid);
+
+    if (orchestra == null)
+    {
+        return TypedResults.NotFound();
+    }
+
     var musicians = dbContext.Orchestras
         .Include(x => x.Musicians)
         .FirstOrDefault(x => x.Id == orchestraid)?.Musicians;
@@ -192,19 +256,28 @@ orchestraMusiciansEndpoints.MapGet("", Ok<IEnumerable<MusicianDto>> (
     return TypedResults.Ok(mapper.Map<IEnumerable<MusicianDto>>(musicians));
 });
 
+// post
+
 orchestraEndpoints.MapPost("", CreatedAtRoute<OrchestraDto> (
     DataContext dbContext,
     IMapper mapper,
     OrchestraCreationDto creationDto
     ) =>
 {
+    // how to validate dto? and return BadRequest?
+
     var orchestra = mapper.Map<Orchestra>(creationDto);
+    // possible with mapping?
+    var country = dbContext.Countries.FirstOrDefault(c => c.Code == creationDto.CountryCode);
+    orchestra.Country = country;
     dbContext.Orchestras.Add(orchestra);
     dbContext.SaveChanges();
 
     var orchestraToReturn = mapper.Map<OrchestraDto>(orchestra);
     return TypedResults.CreatedAtRoute(orchestraToReturn, "GetOrchestra", new { orchestraid = orchestraToReturn.Id });
 });
+
+// put
 
 orchestraWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
     DataContext dbContext,
@@ -213,6 +286,8 @@ orchestraWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
     OrchestraUpdateDto updateDto
     ) =>
 {
+    // how to validate dto? and return BadRequest?
+
     var orchestra = dbContext.Orchestras
         .FirstOrDefault(o => o.Id == orchestraid);
     if (orchestra == null)
@@ -220,12 +295,56 @@ orchestraWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
         return TypedResults.NotFound();
     }
 
+    // possible with mapping?
+    var newCountry = dbContext.Countries.FirstOrDefault(c => c.Code == updateDto.CountryCode);
+    if (newCountry == null)
+    {
+        return TypedResults.NotFound();
+    }
+
     orchestra.Name = updateDto.Name;
     orchestra.Conductor = updateDto.Conductor;
+    orchestra.Country = newCountry;
     dbContext.SaveChanges();
 
     return TypedResults.NoContent();
 });
+
+orchestraMusiciansEndpoints.MapPut("", Results<NotFound, NoContent> (
+    DataContext dbContext,
+    IMapper mapper,
+    int orchestraid,
+    OrchestraMusiciansUpdateDto updateDto
+    ) =>
+{
+    // how to validate dto? and return BadRequest?
+
+    var orchestra = dbContext.Orchestras
+        .Include (o => o.Musicians)
+        .FirstOrDefault(o => o.Id == orchestraid);
+    if (orchestra == null)
+    {
+        return TypedResults.NotFound();
+    }
+
+    var newMusicians = new List<Musician>();
+    foreach (var musicianid in updateDto.MusicianIds)
+    {
+        var newMusician = dbContext.Musicians.FirstOrDefault(o => o.Id == musicianid);
+        if (newMusician == null)
+        {
+            return TypedResults.NotFound();
+        }
+        newMusicians.Add(newMusician);
+    }
+
+    orchestra.Musicians = newMusicians;
+    dbContext.SaveChanges();
+
+    return TypedResults.NoContent();
+});
+
+// delete
 
 orchestraWithIdEndpoints.MapDelete("", Results<NotFound, NoContent> (
     DataContext dbContext,
@@ -246,7 +365,9 @@ orchestraWithIdEndpoints.MapDelete("", Results<NotFound, NoContent> (
 });
 
 
-// Musician
+// Musician --------------------------------------------------------------------------------
+
+// get
 
 musicianEndpoints.MapGet("", Ok<IEnumerable<MusicianDto>> (
     DataContext dbContext,
@@ -272,18 +393,28 @@ musicianWithIdEndpoints.MapGet("", Results<Ok<MusicianDto>, NotFound> (
     return TypedResults.Ok(mapper.Map<MusicianDto>(musician));
 }).WithName("GetMusician");
 
-musicianOrchestrasEndpoints.MapGet("", Ok<IEnumerable<OrchestraDto>> (
+musicianOrchestrasEndpoints.MapGet("", Results<Ok<IEnumerable<OrchestraDto>>, NotFound> (
     DataContext dbContext,
     int musicianid,
     IMapper mapper
     ) =>
 {
+    var musician = dbContext.Musicians.FirstOrDefault(x => x.Id == musicianid);
+
+    if (musician == null)
+    {
+        return TypedResults.NotFound();
+    }
+
     var orchestras = dbContext.Musicians
         .Include(x => x.Orchestras)
+        .ThenInclude(x => x.Country)
         .FirstOrDefault(x => x.Id == musicianid)?.Orchestras;
 
     return TypedResults.Ok(mapper.Map<IEnumerable<OrchestraDto>>(orchestras));
 });
+
+// post
 
 musicianEndpoints.MapPost("", CreatedAtRoute<MusicianDto> (
     DataContext dbContext,
@@ -291,6 +422,8 @@ musicianEndpoints.MapPost("", CreatedAtRoute<MusicianDto> (
     MusicianCreationDto creationDto
     ) =>
 {
+    // how to validate dto? and return BadRequest?
+
     var musician = mapper.Map<Musician>(creationDto);
     dbContext.Musicians.Add(musician);
     dbContext.SaveChanges();
@@ -299,6 +432,8 @@ musicianEndpoints.MapPost("", CreatedAtRoute<MusicianDto> (
     return TypedResults.CreatedAtRoute(musicianToReturn, "GetMusician", new { musicianid = musicianToReturn.Id });
 });
 
+// put
+
 musicianWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
     DataContext dbContext,
     IMapper mapper,
@@ -306,6 +441,8 @@ musicianWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
     MusicianUpdateDto updateDto
     ) =>
 {
+    // how to validate dto? and return BadRequest?
+
     var musician = dbContext.Musicians
         .FirstOrDefault(m => m.Id == musicianid);
     if (musician == null)
@@ -319,6 +456,42 @@ musicianWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
 
     return TypedResults.NoContent();
 });
+
+musicianOrchestrasEndpoints.MapPut("", Results<NotFound, NoContent> (
+    DataContext dbContext,
+    IMapper mapper,
+    int musicianid,
+    MusicianOrchestrasUpdateDto updateDto
+    ) =>
+{
+    // how to validate dto? and return BadRequest?
+
+    var musician = dbContext.Musicians
+        .Include(m => m.Orchestras)
+        .FirstOrDefault(m => m.Id == musicianid);
+    if (musician == null)
+    {
+        return TypedResults.NotFound();
+    }
+
+    var newOrchestras = new List<Orchestra>();
+    foreach (var orchestraid in updateDto.OrchestraIds)
+    {
+        var newOrchestra = dbContext.Orchestras.FirstOrDefault(o => o.Id == orchestraid);
+        if (newOrchestra == null)
+        {
+            return TypedResults.NotFound();
+        }
+        newOrchestras.Add(newOrchestra);
+    }
+
+    musician.Orchestras = newOrchestras;
+    dbContext.SaveChanges();
+
+    return TypedResults.NoContent();
+});
+
+// delete
 
 musicianWithIdEndpoints.MapDelete("", Results<NotFound, NoContent> (
     DataContext dbContext,

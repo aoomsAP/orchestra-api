@@ -9,6 +9,7 @@ namespace MinimalAPI.Profiles
         public CountryProfile()
         {
             CreateMap<Country, CountryDto>();
+            CreateMap<CountryCreationDto, Country>();
         }
     }
 }
