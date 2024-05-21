@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Library.Contexts;
+using Microsoft.EntityFrameworkCore;
 using Project.Entities;
 using System.Diagnostics.Metrics;
 
@@ -71,13 +72,15 @@ namespace Project.Services
 
         public IEnumerable<Orchestra> GetOrchestras()
         {
-            return this.context.Orchestras;
+            return this.context.Orchestras
+                .Include(o => o.Country);
         }
 
         public Orchestra GetOrchestra(int id)
         {
             // eager loading
             return this.context.Orchestras
+                .Include(o => o.Country)
                 .Include(o => o.Musicians)
                 .FirstOrDefault(x => x.Id == id);
         }
@@ -151,6 +154,7 @@ namespace Project.Services
             // eager loading
             return this.context.Musicians
                 .Include(m => m.Orchestras)
+                .ThenInclude(o => o.Country)
                 .FirstOrDefault(x => x.Id == id);
         }
 

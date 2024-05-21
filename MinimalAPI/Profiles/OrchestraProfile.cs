@@ -8,7 +8,11 @@ namespace MinimalAPI.Profiles
     {
         public OrchestraProfile() 
         {
-            CreateMap<Orchestra, OrchestraDto>();
+            CreateMap<Orchestra, OrchestraDto>()
+                .ForMember(
+                    destination => destination.Country,
+                    option => option.MapFrom(x => x.Country.Name)
+                );
             CreateMap<OrchestraCreationDto, Orchestra>();
         }
     }

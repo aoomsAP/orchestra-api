@@ -7,7 +7,7 @@ namespace MinimalAPI.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Conductor { get; set; }
-        public string CountryCode { get; set; }
+        public string Country { get; set; }
     }
 
     public class OrchestraCreationDto

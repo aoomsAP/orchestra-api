@@ -55,7 +55,7 @@
         "IsRequired": true
       },
       {
-        "Name": "countryUpdateViewModel",
+        "Name": "viewModel",
         "Type": "Project.ViewModels.CountryUpdateViewModel",
         "IsRequired": true
       }
@@ -134,7 +134,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "musicianCreateViewModel",
+        "Name": "viewModel",
         "Type": "Project.ViewModels.MusicianCreateViewModel",
         "IsRequired": true
       }
@@ -171,7 +171,7 @@
         "IsRequired": true
       },
       {
-        "Name": "musicianUpdateViewModel",
+        "Name": "viewModel",
         "Type": "Project.ViewModels.MusicianUpdateViewModel",
         "IsRequired": true
       }
@@ -250,7 +250,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "orchestraCreateViewModel",
+        "Name": "viewModel",
         "Type": "Project.ViewModels.OrchestraCreateViewModel",
         "IsRequired": true
       }
@@ -287,7 +287,7 @@
         "IsRequired": true
       },
       {
-        "Name": "orchestraUpdateViewModel",
+        "Name": "viewModel",
         "Type": "Project.ViewModels.OrchestraUpdateViewModel",
         "IsRequired": true
       }

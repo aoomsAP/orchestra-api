@@ -7,6 +7,7 @@ namespace Project.ViewModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Conductor { get; set; }
+        public string? Country { get; set; }
     }
 
     public class OrchestraCreateViewModel
@@ -15,6 +16,9 @@ namespace Project.ViewModels
         public string Name { get; set; }
 
         public string Conductor { get; set; }
+
+        [RegularExpression("^[A-Z]{2}$")]
+        public string CountryCode { get; set; }
     }
 
     public class OrchestraUpdateViewModel
@@ -24,6 +28,9 @@ namespace Project.ViewModels
 
         [Required]
         public string Conductor { get; set; }
+
+        [RegularExpression("^[A-Z]{2}$")]
+        public string CountryCode { get; set; }
     }
 
     public class OrchestraMusiciansUpdateViewModel

@@ -1213,9 +1213,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\EntityFramework.csproj",
-      "projectName": "EntityFramework",
-      "projectPath": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\EntityFramework.csproj",
+      "projectUniqueName": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\MVC.csproj",
+      "projectName": "MVC",
+      "projectPath": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\MVC.csproj",
       "packagesPath": "C:\\Users\\32473\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\obj\\",
       "projectStyle": "PackageReference",

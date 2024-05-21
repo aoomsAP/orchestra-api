@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Project.Entities;
 using System.Xml.Linq;
 
-namespace Project.Entities
+namespace Library.Contexts
 {
     public class DataContext : DbContext
     {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PdL4alNGUDxQKowpuCKil0TzUPE57+SxZMNPp5EO8tJLb32Uv/vGAECoqQXiZyl85Xez1+hF7Qu6euGARQJcKg==",
+  "dgSpecHash": "y2roDEe+rjZggnPj2N432fioqploU7QovUwgyf0Yt9nXdeSNTPFDOScwRQQPNB6rSCJlclepu7PzyzDbnFdjnw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\EntityFramework.csproj",
+  "projectFilePath": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\Project\\MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\32473\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\32473\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.18\\microsoft.entityframeworkcore.7.0.18.nupkg.sha512",

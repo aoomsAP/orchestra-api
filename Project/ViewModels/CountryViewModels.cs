@@ -11,7 +11,7 @@ namespace Project.ViewModels
 
     public class CountryCreateViewModel
     {
-        [Required, MaxLength(2), RegularExpression("^[A-Z]{2}$")]
+        [Required, RegularExpression("^[A-Z]{2}$")]
         public string Code { get; set; }
 
         [Required]
