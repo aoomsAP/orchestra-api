@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FluentValidation;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MinimalAPI.Models
 {
@@ -19,11 +21,37 @@ namespace MinimalAPI.Models
 
     public class CountryUpdateDto
     {
+        [Required]
         public string Name { get; set; }
     }
 
     public class CountryOrchestrasUpdateDto
     {
         public ICollection<int> OrchestraIds { get; set; }
+    }
+
+    // FluentValidation validators
+    public class CountryCreatonDtoValidator : AbstractValidator<CountryCreationDto>
+    {
+        public CountryCreatonDtoValidator()
+        {
+            RuleFor(x => x.Code)
+                .NotNull()
+                .Matches(@"^[A-Z]{2}$");
+
+            RuleFor(x => x.Name)
+                .NotNull()
+                .NotEmpty();
+        }
+    }
+
+    public class CountryUpdateDtoValidator : AbstractValidator<CountryUpdateDto>
+    {
+        public CountryUpdateDtoValidator()
+        {
+            RuleFor(x => x.Name)
+                .NotNull()
+                .NotEmpty();
+        }
     }
 }

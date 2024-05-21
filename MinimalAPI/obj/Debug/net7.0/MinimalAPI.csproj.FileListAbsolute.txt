@@ -44,3 +44,6 @@ C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikke
 C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\MinimalAPI\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\MinimalAPI\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\MinimalAPI\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\MinimalAPI\bin\Debug\net7.0\FluentValidation.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\MinimalAPI\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
+C:\Users\32473\Documents\- GRADUAAT PROGRAMMEREN\Jaar 2 (2023-2024)\API Ontwikkeling\Project\Project\MinimalAPI\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll

@@ -1,4 +1,5 @@
 using AutoMapper;
+using FluentValidation;
 using Library.Contexts;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 // ----------------------------
 
 // Data
-//services.AddScoped<IData, InMemoryData>();
+// builder.Services.AddScoped<IData, InMemoryData>();
 builder.Services.AddScoped<IData, EfData>();
 
 // Swagger
@@ -25,6 +26,17 @@ builder.Services.AddSwaggerGen();
 // Getting connection string & registering DbContext to container
 var connection = builder.Configuration["ConnectionStrings:DbConnectionString"];
 builder.Services.AddDbContext<DataContext>(o => o.UseMySql(connection, ServerVersion.AutoDetect(connection), b => b.MigrationsAssembly("MinimalAPI")));
+
+// Fluent Validators
+// Fluent validation implementation based on docs https://docs.fluentvalidation.net/en/latest/aspnet.html
+builder.Services.AddScoped<IValidator<CountryCreationDto>, CountryCreatonDtoValidator>();
+builder.Services.AddScoped<IValidator<CountryUpdateDto>, CountryUpdateDtoValidator>();
+builder.Services.AddScoped<IValidator<OrchestraCreationDto>, OrchestraCreationDtoValidator>();
+builder.Services.AddScoped<IValidator<OrchestraUpdateDto>, OrchestraUpdateDtoValidator>();
+builder.Services.AddScoped<IValidator<OrchestraMusiciansUpdateDto>, OrchestraMusiciansUpdateDtoValidator>();
+builder.Services.AddScoped<IValidator<MusicianCreationDto>, MusicianCreationDtoValidator>();
+builder.Services.AddScoped<IValidator<MusicianUpdateDto>, MusicianUpdateDtoValidator>();
+builder.Services.AddScoped<IValidator<MusicianOrchestrasUpdateDto>, MusicianOrchestrasUpdateDtoValidator>();
 
 // Automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -116,36 +128,47 @@ countryOrchestraEndpoints.MapGet("", Results<Ok<IEnumerable<OrchestraDto>>, NotF
 
 // post
 
-countryEndpoints.MapPost("", CreatedAtRoute<CountryDto> (
+countryEndpoints.MapPost("", Results<CreatedAtRoute<CountryDto>, ValidationProblem> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
-    [FromBody] CountryCreationDto creationDto
+    [FromBody] CountryCreationDto creationDto,
+    [FromServices] IValidator<CountryCreationDto> validator
     ) =>
 {
-    // how to validate dto? and return BadRequest?
+    FluentValidation.Results.ValidationResult validation = validator.Validate(creationDto);
+    if (!validation.IsValid)
+    {
+        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
+    }
 
     var country = mapper.Map<Country>(creationDto);
     data.AddCountry(country);
 
     var countryToReturn = mapper.Map<CountryDto>(country);
     return TypedResults.CreatedAtRoute(countryToReturn, "GetCountry", new { countrycode = countryToReturn.Code });
-});
+}) ;
 
 // put
 
-countryWithCodeEndpoints.MapPut("", Results<NotFound, NoContent> (
+countryWithCodeEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProblem> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromRoute][RegularExpression("^[A-Z]{2}$")] string countrycode,
-    [FromBody] CountryUpdateDto updateDto
+    [FromBody] CountryUpdateDto updateDto,
+    [FromServices] IValidator<CountryUpdateDto> validator
+
     ) =>
 {
-    // how to validate dto? and return BadRequest?
+    FluentValidation.Results.ValidationResult validation = validator.Validate(updateDto);
+    if (!validation.IsValid)
+    {
+        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
+    }
 
     var country = data.GetCountry(countrycode);
     if (country == null)
     {
-        return TypedResults.NotFound();
+        return TypedResults.NotFound(); // 404
     }
 
     country.Name = updateDto.Name;
@@ -154,14 +177,19 @@ countryWithCodeEndpoints.MapPut("", Results<NotFound, NoContent> (
     return TypedResults.NoContent();
 });
 
-countryOrchestraEndpoints.MapPut("", Results<NotFound, NoContent> (
+countryOrchestraEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProblem> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromRoute][RegularExpression("^[A-Z]{2}$")] string countrycode,
-    [FromBody] CountryOrchestrasUpdateDto updateDto
+    [FromBody] CountryOrchestrasUpdateDto updateDto,
+    [FromServices] IValidator<CountryOrchestrasUpdateDto> validator
     ) =>
 {
-    // how to validate dto? and return BadRequest?
+    FluentValidation.Results.ValidationResult validation = validator.Validate(updateDto);
+    if (!validation.IsValid)
+    {
+        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
+    }
 
     var country = data.GetCountry(countrycode);
     if (country == null)
@@ -255,13 +283,18 @@ orchestraMusiciansEndpoints.MapGet("", Results<Ok<IEnumerable<MusicianDto>>, Not
 
 // post
 
-orchestraEndpoints.MapPost("", CreatedAtRoute<OrchestraDto> (
+orchestraEndpoints.MapPost("", Results<CreatedAtRoute<OrchestraDto>, ValidationProblem> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
-    [FromBody] OrchestraCreationDto creationDto
+    [FromBody] OrchestraCreationDto creationDto,
+    [FromServices] IValidator<OrchestraCreationDto> validator
     ) =>
 {
-    // how to validate dto? and return BadRequest?
+    FluentValidation.Results.ValidationResult validation = validator.Validate(creationDto);
+    if (!validation.IsValid)
+    {
+        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
+    }
 
     var orchestra = mapper.Map<Orchestra>(creationDto);
     var country = data.GetCountry(creationDto.CountryCode);
@@ -275,14 +308,19 @@ orchestraEndpoints.MapPost("", CreatedAtRoute<OrchestraDto> (
 
 // put
 
-orchestraWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
+orchestraWithIdEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProblem> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromRoute] int orchestraid,
-    [FromBody] OrchestraUpdateDto updateDto
+    [FromBody] OrchestraUpdateDto updateDto,
+    [FromServices] IValidator<OrchestraUpdateDto> validator
     ) =>
 {
-    // how to validate dto? and return BadRequest?
+    FluentValidation.Results.ValidationResult validation = validator.Validate(updateDto);
+    if (!validation.IsValid)
+    {
+        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
+    }
 
     var orchestra = data.GetOrchestra(orchestraid);
     if (orchestra == null)
@@ -293,7 +331,7 @@ orchestraWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
     var newCountry = data.GetCountry(updateDto.CountryCode);
     if (newCountry == null)
     {
-        return TypedResults.NotFound(); // 404 appropriate error? or bad request?
+        return TypedResults.NotFound();
     }
 
     orchestra.Name = updateDto.Name;
@@ -305,14 +343,19 @@ orchestraWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
     return TypedResults.NoContent();
 });
 
-orchestraMusiciansEndpoints.MapPut("", Results<NotFound, NoContent> (
+orchestraMusiciansEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProblem> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromRoute] int orchestraid,
-    [FromBody] OrchestraMusiciansUpdateDto updateDto
+    [FromBody] OrchestraMusiciansUpdateDto updateDto,
+    [FromServices] IValidator<OrchestraMusiciansUpdateDto> validator
     ) =>
 {
-    // how to validate dto? and return BadRequest?
+    FluentValidation.Results.ValidationResult validation = validator.Validate(updateDto);
+    if (!validation.IsValid)
+    {
+        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
+    }
 
     var orchestra = data.GetOrchestra(orchestraid);
     if (orchestra == null)
@@ -329,7 +372,7 @@ orchestraMusiciansEndpoints.MapPut("", Results<NotFound, NoContent> (
         var newMusician = data.GetMusician(musicianId);
         if (newMusician == null)
         {
-            return TypedResults.NotFound(); // 404 appropriate error? or bad request?
+            return TypedResults.NotFound();
         }
         newMusicians.Add(newMusician);
     }
@@ -406,13 +449,18 @@ musicianOrchestrasEndpoints.MapGet("", Results<Ok<IEnumerable<OrchestraDto>>, No
 
 // post
 
-musicianEndpoints.MapPost("", CreatedAtRoute<MusicianDto> (
+musicianEndpoints.MapPost("", Results<CreatedAtRoute<MusicianDto>, ValidationProblem> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
-    [FromBody] MusicianCreationDto creationDto
+    [FromBody] MusicianCreationDto creationDto,
+    [FromServices] IValidator<MusicianCreationDto> validator
     ) =>
 {
-    // how to validate dto? and return BadRequest?
+    FluentValidation.Results.ValidationResult validation = validator.Validate(creationDto);
+    if (!validation.IsValid)
+    {
+        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
+    }
 
     var musician = mapper.Map<Musician>(creationDto);
     data.AddMusician(musician);
@@ -423,14 +471,19 @@ musicianEndpoints.MapPost("", CreatedAtRoute<MusicianDto> (
 
 // put
 
-musicianWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
+musicianWithIdEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProblem> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromRoute] int musicianid,
-    [FromBody] MusicianUpdateDto updateDto
+    [FromBody] MusicianUpdateDto updateDto,
+    [FromServices] IValidator<MusicianUpdateDto> validator
     ) =>
 {
-    // how to validate dto? and return BadRequest?
+    FluentValidation.Results.ValidationResult validation = validator.Validate(updateDto);
+    if (!validation.IsValid)
+    {
+        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
+    }
 
     var musician = data.GetMusician(musicianid);
     if (musician == null)
@@ -445,14 +498,19 @@ musicianWithIdEndpoints.MapPut("", Results<NotFound, NoContent> (
     return TypedResults.NoContent();
 });
 
-musicianOrchestrasEndpoints.MapPut("", Results<NotFound, NoContent> (
+musicianOrchestrasEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProblem> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromRoute] int musicianid,
-    [FromBody] MusicianOrchestrasUpdateDto updateDto
+    [FromBody] MusicianOrchestrasUpdateDto updateDto,
+    [FromServices] IValidator<MusicianOrchestrasUpdateDto> validator
     ) =>
 {
-    // how to validate dto? and return BadRequest?
+    FluentValidation.Results.ValidationResult validation = validator.Validate(updateDto);
+    if (!validation.IsValid)
+    {
+        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
+    }
 
     var musician = data.GetMusician(musicianid);
     if (musician == null)
@@ -466,7 +524,7 @@ musicianOrchestrasEndpoints.MapPut("", Results<NotFound, NoContent> (
         var newOrchestra = data.GetOrchestra(orchestraId);
         if (newOrchestra == null)
         {
-            return TypedResults.NotFound(); // 404 appropriate error? or bad request?
+            return TypedResults.NotFound();
         }
         newOrchestras.Add(newOrchestra);
     }

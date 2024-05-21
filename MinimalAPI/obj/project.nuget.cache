@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "QYXuYbZaHHpYB1YIeEkWOnEbU76gR/1GDH6LQP5Ds7BA2SVUGe7gionkZKcaD9EGhxH2CLu3Qr4ew2gQT24lsg==",
+  "dgSpecHash": "UwZuCTANBAHQKVDo+tY1R1ddpR4Wi7koyvN+oLARNk7l2RBqVRq4FSJulIF/7uSPyH09tHgX7q3gqTaDHamkbg==",
   "success": true,
   "projectFilePath": "C:\\Users\\32473\\Documents\\- GRADUAAT PROGRAMMEREN\\Jaar 2 (2023-2024)\\API Ontwikkeling\\Project\\Project\\MinimalAPI\\MinimalAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\32473\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\32473\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
+    "C:\\Users\\32473\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\32473\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\32473\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\32473\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.18\\microsoft.entityframeworkcore.7.0.18.nupkg.sha512",
     "C:\\Users\\32473\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.18\\microsoft.entityframeworkcore.abstractions.7.0.18.nupkg.sha512",

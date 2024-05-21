@@ -22,13 +22,11 @@ namespace Project
 
             // mySqlOptions / MigrationsAssembly necessary because DbContext is in class library
             // and this apparently causes migrations confusion
+            // https://stackoverflow.com/questions/38705694/add-migration-with-different-assembly
             services.AddDbContext<DataContext>(x => x.UseMySql(
                 connection,
                 ServerVersion.AutoDetect(connection),
-                mySqlOptions =>
-            {
-                mySqlOptions.MigrationsAssembly("MVC");
-            }));
+                mySqlOptions => mySqlOptions.MigrationsAssembly("MVC")));
         }
 
         // The below method gets called by runtime
