@@ -103,41 +103,18 @@ namespace Project.Services
             var toUpdate = GetOrchestra(orchestra.Id);
             toUpdate.Name = orchestra.Name;
             toUpdate.Conductor = orchestra.Conductor;
+            toUpdate.Country = orchestra.Country;
             this.context.SaveChanges();
         }
 
-        // below method updates the listed musicians for an orchestra
-        // a) it updates the orchestra relationship for each removed/added musician
-        // b) it updates the musicians relationship for the orchestra
         public void UpdateOrchestraMusicians(Orchestra orchestra)
         {
             var toUpdateOrchestra = GetOrchestra(orchestra.Id);
 
-            var oldMusicians = toUpdateOrchestra.Musicians;
-            var newMusicians = orchestra.Musicians;
-
-            // REMOVE this orchestra relationship for each musician that was removed
-            foreach (var musician in oldMusicians)
-            {
-                // if the musician from the old list doesn't appear on the new list, that means it's been removed
-                if (!newMusicians.Any(m => m.Id == musician.Id))
-                {
-                    musician.Orchestras.Remove(toUpdateOrchestra);
-                }
-            }
-
-            // ADD this orchestra relationship for each musician that was added
-            foreach (var musician in newMusicians)
-            {
-                // if the musician from the new list doesn't appear on the old list, that means it's been newly added
-                if (!oldMusicians.Any(m => m.Id == musician.Id))
-                {
-                    musician.Orchestras.Add(toUpdateOrchestra);
-                }
-            }
-
             // update orchestra-musicians list on the orchestra
-            toUpdateOrchestra.Musicians = newMusicians;
+            toUpdateOrchestra.Musicians = orchestra.Musicians;
+
+            // entity framework will automatically update the orchestra relationship for each affected musician
 
             this.context.SaveChanges();
         }
@@ -179,38 +156,14 @@ namespace Project.Services
             this.context.SaveChanges();
         }
 
-        // below method updates the listed orchestras for a musician
-        // a) it updates the musician relationship for each removed/added orchestra
-        // b) it updates the orchestras relationship for the musician
         public void UpdateMusicianOrchestras(Musician musician)
         {
             var toUpdateMusician = GetMusician(musician.Id);
 
-            var oldOrchestras = toUpdateMusician.Orchestras;
-            var newOrchestras = musician.Orchestras;
-
-            // REMOVE this musician relationship for each orchestra that was removed
-            foreach (var orchestra in oldOrchestras)
-            {
-                // if the orchestra from the old list doesn't appear on the new list, that means it's been removed
-                if (!newOrchestras.Any(o => o.Id == orchestra.Id))
-                {
-                    orchestra.Musicians.Remove(toUpdateMusician);
-                }
-            }
-
-            // ADD this musician relationship for each orchestra that was added
-            foreach (var orchestra in newOrchestras)
-            {
-                // if the orchestra from the new list doesn't appear on the old list, that means it's been newly added
-                if (!oldOrchestras.Any(o => o.Id == orchestra.Id))
-                {
-                    orchestra.Musicians.Add(toUpdateMusician);
-                }
-            }
-
             // update orchestra-musicians list on the orchestra
-            toUpdateMusician.Orchestras = newOrchestras;
+            toUpdateMusician.Orchestras = musician.Orchestras;
+
+            // entity framework will automatically update the musician relationship for each affected orchestra
 
             this.context.SaveChanges();
         }

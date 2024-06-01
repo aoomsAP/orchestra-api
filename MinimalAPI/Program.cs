@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 // ----------------------------
 
 // Data
-// builder.Services.AddScoped<IData, InMemoryData>();
+//builder.Services.AddScoped<IData, InMemoryData>();
 builder.Services.AddScoped<IData, EfData>();
 
 // Swagger
@@ -33,10 +33,8 @@ builder.Services.AddScoped<IValidator<CountryCreationDto>, CountryCreatonDtoVali
 builder.Services.AddScoped<IValidator<CountryUpdateDto>, CountryUpdateDtoValidator>();
 builder.Services.AddScoped<IValidator<OrchestraCreationDto>, OrchestraCreationDtoValidator>();
 builder.Services.AddScoped<IValidator<OrchestraUpdateDto>, OrchestraUpdateDtoValidator>();
-builder.Services.AddScoped<IValidator<OrchestraMusiciansUpdateDto>, OrchestraMusiciansUpdateDtoValidator>();
 builder.Services.AddScoped<IValidator<MusicianCreationDto>, MusicianCreationDtoValidator>();
 builder.Services.AddScoped<IValidator<MusicianUpdateDto>, MusicianUpdateDtoValidator>();
-builder.Services.AddScoped<IValidator<MusicianOrchestrasUpdateDto>, MusicianOrchestrasUpdateDtoValidator>();
 
 // Automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -177,20 +175,13 @@ countryWithCodeEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProbl
     return TypedResults.NoContent();
 });
 
-countryOrchestraEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProblem> (
+countryOrchestraEndpoints.MapPut("", Results<NotFound, NoContent> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromRoute][RegularExpression("^[A-Z]{2}$")] string countrycode,
-    [FromBody] CountryOrchestrasUpdateDto updateDto,
-    [FromServices] IValidator<CountryOrchestrasUpdateDto> validator
+    [FromBody] CountryOrchestrasUpdateDto updateDto
     ) =>
 {
-    FluentValidation.Results.ValidationResult validation = validator.Validate(updateDto);
-    if (!validation.IsValid)
-    {
-        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
-    }
-
     var country = data.GetCountry(countrycode);
     if (country == null)
     {
@@ -283,7 +274,7 @@ orchestraMusiciansEndpoints.MapGet("", Results<Ok<IEnumerable<MusicianDto>>, Not
 
 // post
 
-orchestraEndpoints.MapPost("", Results<CreatedAtRoute<OrchestraDto>, ValidationProblem> (
+orchestraEndpoints.MapPost("", Results<CreatedAtRoute<OrchestraDto>, ValidationProblem, NotFound> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromBody] OrchestraCreationDto creationDto,
@@ -296,8 +287,14 @@ orchestraEndpoints.MapPost("", Results<CreatedAtRoute<OrchestraDto>, ValidationP
         return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
     }
 
-    var orchestra = mapper.Map<Orchestra>(creationDto);
+    // check if country exists
     var country = data.GetCountry(creationDto.CountryCode);
+    if (country == null)
+    {
+        return TypedResults.NotFound();
+    }
+
+    var orchestra = mapper.Map<Orchestra>(creationDto);
     orchestra.Country = country;
 
     data.AddOrchestra(orchestra);
@@ -343,20 +340,13 @@ orchestraWithIdEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProbl
     return TypedResults.NoContent();
 });
 
-orchestraMusiciansEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProblem> (
+orchestraMusiciansEndpoints.MapPut("", Results<NotFound, NoContent> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromRoute] int orchestraid,
-    [FromBody] OrchestraMusiciansUpdateDto updateDto,
-    [FromServices] IValidator<OrchestraMusiciansUpdateDto> validator
+    [FromBody] OrchestraMusiciansUpdateDto updateDto
     ) =>
 {
-    FluentValidation.Results.ValidationResult validation = validator.Validate(updateDto);
-    if (!validation.IsValid)
-    {
-        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
-    }
-
     var orchestra = data.GetOrchestra(orchestraid);
     if (orchestra == null)
     {
@@ -498,20 +488,13 @@ musicianWithIdEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProble
     return TypedResults.NoContent();
 });
 
-musicianOrchestrasEndpoints.MapPut("", Results<NotFound, NoContent, ValidationProblem> (
+musicianOrchestrasEndpoints.MapPut("", Results<NotFound, NoContent> (
     [FromServices] IData data,
     [FromServices] IMapper mapper,
     [FromRoute] int musicianid,
-    [FromBody] MusicianOrchestrasUpdateDto updateDto,
-    [FromServices] IValidator<MusicianOrchestrasUpdateDto> validator
+    [FromBody] MusicianOrchestrasUpdateDto updateDto
     ) =>
 {
-    FluentValidation.Results.ValidationResult validation = validator.Validate(updateDto);
-    if (!validation.IsValid)
-    {
-        return TypedResults.ValidationProblem(validation.ToDictionary()); // Bad Request 400
-    }
-
     var musician = data.GetMusician(musicianid);
     if (musician == null)
     {
@@ -530,7 +513,7 @@ musicianOrchestrasEndpoints.MapPut("", Results<NotFound, NoContent, ValidationPr
     }
 
     musician.Orchestras = newOrchestras;
-    data.UpdateMusician(musician);
+    data.UpdateMusicianOrchestras(musician);
 
     return TypedResults.NoContent();
 });

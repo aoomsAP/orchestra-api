@@ -278,11 +278,18 @@ namespace Project.Controllers
                 return BadRequest(ModelState);
             }
 
+            // check if country exists
+            var country = this.data.GetCountry(viewModel.CountryCode);
+            if (country == null)
+            {
+                return NotFound("Country not found");
+            }
+
             var newOrchestra = new Orchestra
             {
                 Name = viewModel.Name,
                 Conductor = viewModel.Conductor,
-                Country = this.data.GetCountry(viewModel.CountryCode),
+                Country = country,
                 Musicians = new List<Musician>(),
             };
 

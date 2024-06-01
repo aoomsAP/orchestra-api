@@ -3,6 +3,7 @@ using System.Diagnostics.Metrics;
 using System.Numerics;
 using System.Reflection;
 using System.Security.Claims;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Project.Services
 {
@@ -16,6 +17,7 @@ namespace Project.Services
 
         static InMemoryData()
         {
+
             // country data 
 
             var australia = new Country { Name = "Australia", Code = "AU", Orchestras = new List<Orchestra>()};
@@ -32,14 +34,14 @@ namespace Project.Services
 
             // orchestra data
 
-            var antwerpSymphonyOrchestra = new Orchestra { Id = 1, Name = "Antwerp Symphony Orchestra", Conductor = "Elim Chan", Musicians = new List<Musician>() };
-            var nederlandsPhilharmonischOrkest = new Orchestra { Id = 2, Name = "Nederlands Philharmonisch Orkest", Conductor = "Lorenzo Viotti", Musicians = new List<Musician>() };
-            var brusselsPhilharmonic = new Orchestra { Id = 3, Name = "Brussels Philharmonic", Conductor = "Kazushi Ono", Musicians = new List<Musician>() };
-            var symfonieorkestVanDeMunt = new Orchestra { Id = 4, Name = "Symfonieorkest van de Munt", Conductor = "Alain Altinoglu", Musicians = new List<Musician>() };
-            var brusselsSinfonietta = new Orchestra { Id = 5, Name = "Brussels Sinfonietta", Conductor = "Erik Sluys", Musicians = new List<Musician>() };
-            var amsterdamSinfonietta = new Orchestra { Id = 6, Name = "Amsterdam Sinfonietta", Conductor = "Candida Thompson", Musicians = new List<Musician>() };
-            var londonPhilharmonicOrchestra = new Orchestra { Id = 7, Name = "London Philharmonic Orchestra", Conductor = "Edward Gardner", Musicians = new List<Musician>() };
-            var muncherPhilharmoniker = new Orchestra { Id = 8, Name = "Münchner Philharmoniker", Conductor = "Lahav Shani", Musicians = new List<Musician>() };
+            var antwerpSymphonyOrchestra = new Orchestra { Id = 1, Name = "Antwerp Symphony Orchestra", Conductor = "Elim Chan", Country = belgium, Musicians = new List<Musician>() };
+            var nederlandsPhilharmonischOrkest = new Orchestra { Id = 2, Name = "Nederlands Philharmonisch Orkest", Conductor = "Lorenzo Viotti", Country = netherlands, Musicians = new List<Musician>() };
+            var brusselsPhilharmonic = new Orchestra { Id = 3, Name = "Brussels Philharmonic", Conductor = "Kazushi Ono", Country = belgium, Musicians = new List<Musician>() };
+            var symfonieorkestVanDeMunt = new Orchestra { Id = 4, Name = "Symfonieorkest van de Munt", Conductor = "Alain Altinoglu", Country = belgium, Musicians = new List<Musician>() };
+            var brusselsSinfonietta = new Orchestra { Id = 5, Name = "Brussels Sinfonietta", Conductor = "Erik Sluys", Country = belgium, Musicians = new List<Musician>() };
+            var amsterdamSinfonietta = new Orchestra { Id = 6, Name = "Amsterdam Sinfonietta", Conductor = "Candida Thompson", Country = netherlands, Musicians = new List<Musician>() };
+            var londonPhilharmonicOrchestra = new Orchestra { Id = 7, Name = "London Philharmonic Orchestra", Conductor = "Edward Gardner", Country = uk, Musicians = new List<Musician>() };
+            var muncherPhilharmoniker = new Orchestra { Id = 8, Name = "Münchner Philharmoniker", Conductor = "Lahav Shani", Country = germany, Musicians = new List<Musician>() };
 
             // musician data
 
@@ -225,6 +227,7 @@ namespace Project.Services
             var toUpdateOrchestra = GetOrchestra(orchestra.Id);
             toUpdateOrchestra.Name = orchestra.Name;
             toUpdateOrchestra.Conductor = orchestra.Conductor;
+            toUpdateOrchestra.Country = orchestra.Country;
         }
 
         // below method updates the listed musicians for an orchestra
@@ -234,31 +237,31 @@ namespace Project.Services
         {
             var toUpdateOrchestra = GetOrchestra(orchestra.Id);
 
-            var oldMusicians = toUpdateOrchestra.Musicians;
-            var newMusicians = orchestra.Musicians;
-
-            // REMOVE this orchestra relationship for each musician that was removed
-            foreach (var musician in oldMusicians)
-            {
-                // if the musician from the old list doesn't appear on the new list, that means it's been removed
-                if (!newMusicians.Any(m => m.Id == musician.Id))
-                {
-                    musician.Orchestras.Remove(toUpdateOrchestra);
-                }
-            }
-
-            // ADD this orchestra relationship for each musician that was added
-            foreach (var musician in newMusicians)
-            {
-                // if the musician from the new list doesn't appear on the old list, that means it's been newly added
-                if (!oldMusicians.Any(m => m.Id == musician.Id))
-                {
-                    musician.Orchestras.Add(toUpdateOrchestra);
-                }
-            }
-
             // update orchestra-musicians list on the orchestra
-            toUpdateOrchestra.Musicians = newMusicians;
+            toUpdateOrchestra.Musicians = orchestra.Musicians;
+
+            // go through all musicians
+            foreach (var musician in musicians)
+            {
+                // if the updated orchestra doesn't have this musician listed,
+                // that means that musician-orchestra relationship was deleted
+                // therefore orchestra should be deleted from list of orchestras
+                if (toUpdateOrchestra.Musicians.FirstOrDefault(x => x.Id == musician.Id) == null)
+                {
+                    musician.Orchestras.Remove(musician.Orchestras.FirstOrDefault(x => x.Id == toUpdateOrchestra.Id));
+                }
+                // if the updated orchestra DOES have the musician listed
+                // that means there is a musician-orchestra relationship
+                else
+                {
+                    // if musician doesn't have orchestra in list yet, add it to list
+                    if (musician.Orchestras.FirstOrDefault(x => x.Id == toUpdateOrchestra.Id) == null)
+                    {
+                        musician.Orchestras.Add(toUpdateOrchestra);
+                    }
+                }
+            }
+            
         }
 
         // musician data
@@ -298,31 +301,30 @@ namespace Project.Services
         {
             var toUpdateMusician = GetMusician(musician.Id);
 
-            var oldOrchestras = toUpdateMusician.Orchestras;
-            var newOrchestras = musician.Orchestras;
-
-            // REMOVE this musician relationship for each orchestra that was removed
-            foreach (var orchestra in oldOrchestras)
-            {
-                // if the orchestra from the old list doesn't appear on the new list, that means it's been removed
-                if (!newOrchestras.Any(o => o.Id == orchestra.Id))
-                {
-                    orchestra.Musicians.Remove(toUpdateMusician);
-                }
-            }
-
-            // ADD this musician relationship for each orchestra that was added
-            foreach (var orchestra in newOrchestras)
-            {
-                // if the orchestra from the new list doesn't appear on the old list, that means it's been newly added
-                if (!oldOrchestras.Any(o => o.Id == orchestra.Id))
-                {
-                    orchestra.Musicians.Add(toUpdateMusician);
-                }
-            }
-
             // update orchestra-musicians list on the orchestra
-            toUpdateMusician.Orchestras = newOrchestras;
+            toUpdateMusician.Orchestras = musician.Orchestras;
+
+            // go through all orchestras
+            foreach (var orchestra in orchestras)
+            {
+                // if the updated musician doesn't have this orchestra listed,
+                // that means that musician-orchestra relationship was deleted
+                // therefore musician should be deleted from list of musicians
+                if (toUpdateMusician.Orchestras.FirstOrDefault(x => x.Id == orchestra.Id) == null)
+                {
+                    orchestra.Musicians.Remove(orchestra.Musicians.FirstOrDefault(x => x.Id == toUpdateMusician.Id));
+                }
+                // if the updated musician DOES have the orchestra listed
+                // that means there is a musician-orchestra relationship
+                else
+                {
+                    // if musician doesn't have orchestra in list yet, add it to list
+                    if (orchestra.Musicians.FirstOrDefault(x => x.Id == toUpdateMusician.Id) == null)
+                    {
+                        orchestra.Musicians.Add(toUpdateMusician);
+                    }
+                }
+            }
         }
     }
 }

@@ -65,15 +65,4 @@ namespace MinimalAPI.Models
                 .When(c => c.CountryCode != null);
         }
     }
-
-    // unnecessary, FromBody JSON error regardless
-    public class OrchestraMusiciansUpdateDtoValidator : AbstractValidator<OrchestraMusiciansUpdateDto>
-    {
-        public OrchestraMusiciansUpdateDtoValidator()
-        {
-            RuleForEach(x => x.MusicianIds)
-                // check whether each id is an int
-                .Must(x => Int32.TryParse(x.ToString(), out int number));
-        }
-    }
 }

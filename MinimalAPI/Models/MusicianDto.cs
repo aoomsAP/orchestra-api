@@ -62,15 +62,4 @@ namespace MinimalAPI.Models
                 .IsInEnum();
         }
     }
-
-    // unnecessary, FromBody JSON error regardless
-    public class MusicianOrchestrasUpdateDtoValidator : AbstractValidator<MusicianOrchestrasUpdateDto>
-    {
-        public MusicianOrchestrasUpdateDtoValidator()
-        {
-            RuleForEach(x => x.OrchestraIds)
-                // check whether each id is an int
-                .Must(x => Int32.TryParse(x.ToString(), out int number));
-        }
-    }
 }
