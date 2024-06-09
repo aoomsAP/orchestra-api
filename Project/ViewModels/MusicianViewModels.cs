@@ -14,19 +14,18 @@ namespace Project.ViewModels
 
     public class MusicianCreateViewModel
     {
-        [Required]
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
 
-        [Required]
+        [Required, EnumDataType(typeof(Instruments))]
         public Instruments Instrument { get; set; }
     }
 
     public class MusicianUpdateViewModel
     {
-        [Required]
         public string Name { get; set; }
 
-        [Required]
+        [EnumDataType(typeof(Instruments))]
         public Instruments Instrument { get; set; }
     }
 

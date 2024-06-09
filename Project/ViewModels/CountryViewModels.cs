@@ -14,13 +14,13 @@ namespace Project.ViewModels
         [Required, RegularExpression("^[A-Z]{2}$")]
         public string Code { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
     }
 
     public class CountryUpdateViewModel
     {
-        [Required]
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
     }
 

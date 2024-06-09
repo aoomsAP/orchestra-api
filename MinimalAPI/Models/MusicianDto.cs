@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Project.Entities;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace MinimalAPI.Models
@@ -13,19 +14,18 @@ namespace MinimalAPI.Models
 
     public class MusicianCreationDto
     {
-        [Required]
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
 
-        [Required]
+        [Required, EnumDataType(typeof(Instruments))]
         public Instruments Instrument { get; set; }
     }
 
     public class MusicianUpdateDto
     {
-        [Required]
         public string Name { get; set; }
 
-        [Required]
+        [EnumDataType(typeof(Instruments))]
         public Instruments Instrument { get; set; }
     }
 

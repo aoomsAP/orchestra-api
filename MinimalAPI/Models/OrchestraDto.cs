@@ -13,7 +13,7 @@ namespace MinimalAPI.Models
 
     public class OrchestraCreationDto
     {
-        [Required]
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
 
         public string Conductor { get; set; } = null!;

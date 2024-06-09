@@ -15,13 +15,13 @@ namespace MinimalAPI.Models
         [Required, RegularExpression("^[A-Z]{2}$")]
         public string Code { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
     }
 
     public class CountryUpdateDto
     {
-        [Required]
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
     }
 
